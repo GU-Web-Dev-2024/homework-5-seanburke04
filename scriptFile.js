@@ -37,9 +37,9 @@ var artPanelIds = [document.getElementById('art-panel-0'),
     document.getElementById('art-panel-2')]
 
 // Add event listeners for each art panel
-artPanelIds[0].addEventListener('click', function() {artPanelViewed(artPanelIds[0])});
-artPanelIds[1].addEventListener('click', function() {artPanelViewed(artPanelIds[1])});
-artPanelIds[2].addEventListener('click', function() {artPanelViewed(artPanelIds[2])});
+for(let i = 0; i < artPanelIds.length; i++){
+    artPanelIds[i].addEventListener('click', function() {artPanelViewed(artPanelIds[i])});
+}
 
 // Add event listener for Reset button and reset counter and art panel backgrounds
 document.getElementById('reset-button').addEventListener('click', function() {
