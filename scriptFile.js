@@ -40,3 +40,15 @@ var artPanelIds = [document.getElementById('art-panel-0'),
 artPanelIds[0].addEventListener('click', function() {artPanelViewed(artPanelIds[0])});
 artPanelIds[1].addEventListener('click', function() {artPanelViewed(artPanelIds[1])});
 artPanelIds[2].addEventListener('click', function() {artPanelViewed(artPanelIds[2])});
+
+// Add event listener for Reset button and reset counter and art panel backgrounds
+document.getElementById('reset-button').addEventListener('click', function() {
+    // Update art viewed counter
+    artCounter = 0;
+    updateCounter();
+
+    // Reset art panel background colors
+    for(let i = 0; i < artPanelIds.length; i++){
+        artPanelIds[i].style.backgroundColor = '#eee';
+    }
+});
