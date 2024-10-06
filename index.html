@@ -109,15 +109,15 @@
 
             <!-- Art Gallery Section -->
             <section class="art-grid">
-                <div class="art-panel">
+                <div id="art-panel-0" class="art-panel">
                     <img src="https://via.placeholder.com/200" alt="Starry Night">
                     <p>Starry Night by Vincent van Gogh</p>
                 </div>
-                <div class="art-panel">
+                <div id="art-panel-1" class="art-panel">
                     <img src="https://via.placeholder.com/200" alt="Mona Lisa">
                     <p>Mona Lisa by Leonardo da Vinci</p>
                 </div>
-                <div class="art-panel">
+                <div id="art-panel-2" class="art-panel">
                     <img src="https://via.placeholder.com/200" alt="The Persistence of Memory">
                     <p>The Persistence of Memory by Salvador Dalí</p>
                 </div>
@@ -141,6 +141,33 @@
             { title: 'Starry Night Over the Rhône', artist: 'Vincent van Gogh', img: 'https://via.placeholder.com/200' }
         ];
         // Add your JavaScript code here.
+        
+        // Handles art panel view tracking
+        function artPanelViewed(id){
+            // Update counter if this panel has not been viewed
+            if (id.style.backgroundColor != 'darkgray'){
+                // Update art viewed counter
+                artCounter++;
+                updateCounter();
+
+                // Change background color
+                id.style.backgroundColor = 'darkgray';
+            }
+        }
+
+        // Updates the Artworks Viewed counter
+        function updateCounter(){
+            document.getElementById('counter').textContent = `Artworks Viewed: ${artCounter}`;
+        }
+
+        var artCounter = 0;
+        var artPanelIds = [document.getElementById('art-panel-0'), document.getElementById('art-panel-1'), document.getElementById('art-panel-2')]
+
+        // Add event listeners for each art panel
+        artPanelIds[0].addEventListener('click', function() {artPanelViewed(artPanelIds[0])});
+        artPanelIds[1].addEventListener('click', function() {artPanelViewed(artPanelIds[1])});
+        artPanelIds[2].addEventListener('click', function() {artPanelViewed(artPanelIds[2])});
+        
         // Later, move this to an external JavaScript file for better organization.
     </script>
 </body>
