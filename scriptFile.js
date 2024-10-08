@@ -26,11 +26,13 @@ function artPanelViewed(id){
     }
 }
 
+// Handles adding a new art panel
 function addArtPanel(){
     const newPanel = document.createElement("div");
     newPanel.className = "art-panel";
     newPanel.textContent = "test";
 
+    // Add hover functionality
     newPanel.addEventListener("mouseover", () => {
         newPanel.style.transform = 'scale(1.05)';
     });
@@ -39,9 +41,11 @@ function addArtPanel(){
         newPanel.style.transform = 'scale(1.0)';
     });
 
+    // Append the new art panel into the art-grid
     document.getElementsByClassName("art-grid")[0].appendChild(newPanel);
 }
 
+// Add art panel on button press
 document.getElementById("add-art-button").addEventListener("click", addArtPanel);
 
 // Updates the Artworks Viewed counter
