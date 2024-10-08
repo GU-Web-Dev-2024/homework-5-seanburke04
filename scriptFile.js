@@ -15,14 +15,16 @@ const newArtworks = [
         
 // Handles art panel view tracking
 function artPanelViewed(id){
+    console.log(id);
+    const panelId = document.getElementById(id);
     // Update counter if this panel has not been viewed
-    if (id.style.backgroundColor != 'darkgray'){
+    if (panelId.style.backgroundColor != 'darkgray'){
         // Update art viewed counter
         artCounter++;
         updateCounter();
 
         // Change background color
-        id.style.backgroundColor = 'darkgray';
+        panelId.style.backgroundColor = 'darkgray';
     }
 }
 
@@ -31,6 +33,17 @@ function addArtPanel(){
     const newPanel = document.createElement("div");
     newPanel.className = "art-panel";
     newPanel.textContent = "test";
+    newPanel.id = `art-panel-${panelCounter}}`;
+    // TODO: Remove log statements
+    console.log(newPanel.id);
+
+    // Set panel style
+    newPanel.style.backgroundColor = '#eee';
+    // newPanel.style.border = '1px solid #ccc';
+    // newPanel.style.borderRadius = '1opx';
+    // newPanel.style.padding = '20px';
+    // newPanel.style.textAlign = 'center';
+    // newPanel.style.transition = 'background-color 0.3s, transform 0.3s';
 
     // Add hover functionality
     newPanel.addEventListener("mouseover", () => {
@@ -40,9 +53,15 @@ function addArtPanel(){
     newPanel.addEventListener("mouseout", () => {
         newPanel.style.transform = 'scale(1.0)';
     });
-
+    
     // Append the new art panel into the art-grid
     document.getElementsByClassName("art-grid")[0].appendChild(newPanel);
+
+    // Add event listener to art panel
+    newPanel.addEventListener('click', function() {artPanelViewed(newPanel.id)});
+    
+    // Increment panel counter
+    panelCounter++;
 }
 
 // Add art panel on button press
@@ -54,11 +73,12 @@ function updateCounter(){
 }
 
 var artCounter = 0;
+var panelCounter = 3;
 var artPanelIds = [document.getElementById('art-panel-0'), 
     document.getElementById('art-panel-1'), 
     document.getElementById('art-panel-2')]
 
-// Add event listeners for each art panel
+// Add event listeners for default art panels
 for(let i = 0; i < artPanelIds.length; i++){
     artPanelIds[i].addEventListener('click', function() {artPanelViewed(artPanelIds[i])});
 }
