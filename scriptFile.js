@@ -16,15 +16,15 @@ const newArtworks = [
 // Handles art panel view tracking
 function artPanelViewed(id){
     console.log(id);
-    const panelId = document.getElementById(id);
+
     // Update counter if this panel has not been viewed
-    if (panelId.style.backgroundColor != 'darkgray'){
+    if (id.style.backgroundColor != 'darkgray'){
         // Update art viewed counter
         artCounter++;
         updateCounter();
 
         // Change background color
-        panelId.style.backgroundColor = 'darkgray';
+        id.style.backgroundColor = 'darkgray';
     }
 }
 
@@ -37,7 +37,7 @@ function addArtPanel(){
     // TODO: Remove log statements
     console.log(newPanel.id);
 
-    // Set panel style
+    // Set panel background color
     newPanel.style.backgroundColor = '#eee';
     // newPanel.style.border = '1px solid #ccc';
     // newPanel.style.borderRadius = '1opx';
@@ -58,7 +58,10 @@ function addArtPanel(){
     document.getElementsByClassName("art-grid")[0].appendChild(newPanel);
 
     // Add event listener to art panel
-    newPanel.addEventListener('click', function() {artPanelViewed(newPanel.id)});
+    newPanel.addEventListener('click', function() {artPanelViewed(document.getElementById(newPanel.id))});
+    
+    // Add panel to panel id array
+    artPanelIds.push(document.getElementById(newPanel.id))
     
     // Increment panel counter
     panelCounter++;
