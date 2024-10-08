@@ -26,6 +26,24 @@ function artPanelViewed(id){
     }
 }
 
+function addArtPanel(){
+    const newPanel = document.createElement("div");
+    newPanel.className = "art-panel";
+    newPanel.textContent = "test";
+
+    newPanel.addEventListener("mouseover", () => {
+        newPanel.style.transform = 'scale(1.05)';
+    });
+
+    newPanel.addEventListener("mouseout", () => {
+        newPanel.style.transform = 'scale(1.0)';
+    });
+
+    document.getElementsByClassName("art-grid")[0].appendChild(newPanel);
+}
+
+document.getElementById("add-art-button").addEventListener("click", addArtPanel);
+
 // Updates the Artworks Viewed counter
 function updateCounter(){
     document.getElementById('counter').textContent = `Artworks Viewed: ${artCounter}`;
