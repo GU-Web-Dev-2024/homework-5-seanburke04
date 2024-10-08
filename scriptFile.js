@@ -15,8 +15,6 @@ const newArtworks = [
         
 // Handles art panel view tracking
 function artPanelViewed(id){
-    console.log(id);
-
     // Update counter if this panel has not been viewed
     if (id.style.backgroundColor != 'darkgray'){
         // Update art viewed counter
@@ -34,8 +32,7 @@ function addArtPanel(){
     newPanel.className = "art-panel";
     newPanel.textContent = "test";
     newPanel.id = `art-panel-${panelCounter}}`;
-    // TODO: Remove log statements
-    console.log(newPanel.id);
+    // TODO: Add content to the divs
 
     // Set panel background color
     newPanel.style.backgroundColor = '#eee';
