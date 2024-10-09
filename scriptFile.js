@@ -11,7 +11,12 @@ const newArtworks = [
     { title: 'Water Lilies', artist: 'Claude Monet', img: 'https://via.placeholder.com/200' },
     { title: 'Starry Night Over the Rhône', artist: 'Vincent van Gogh', img: 'https://via.placeholder.com/200' }
 ];
-// Add your JavaScript code here.
+
+var artCounter = 0;
+var panelCounter = 3;
+var artPanelIds = [document.getElementById('art-panel-0'), 
+    document.getElementById('art-panel-1'), 
+    document.getElementById('art-panel-2')];
         
 // Handles art panel view tracking
 function artPanelViewed(id){
@@ -30,17 +35,11 @@ function artPanelViewed(id){
 function addArtPanel(){
     const newPanel = document.createElement("div");
     newPanel.className = "art-panel";
-    newPanel.textContent = "test";
     newPanel.id = `art-panel-${panelCounter}}`;
-    // TODO: Add content to the divs
+    let newArtIndex = Math.floor(Math.random() * 11);
 
     // Set panel background color
     newPanel.style.backgroundColor = '#eee';
-    // newPanel.style.border = '1px solid #ccc';
-    // newPanel.style.borderRadius = '1opx';
-    // newPanel.style.padding = '20px';
-    // newPanel.style.textAlign = 'center';
-    // newPanel.style.transition = 'background-color 0.3s, transform 0.3s';
 
     // Add hover functionality
     newPanel.addEventListener("mouseover", () => {
@@ -55,7 +54,20 @@ function addArtPanel(){
     document.getElementsByClassName("art-grid")[0].appendChild(newPanel);
 
     // Add event listener to art panel
-    newPanel.addEventListener('click', function() {artPanelViewed(document.getElementById(newPanel.id))});
+    newPanel.addEventListener('click', function() 
+    {artPanelViewed(document.getElementById(newPanel.id))});
+
+    // Add art panel content
+    // Add the image
+    let image = document.createElement('img');
+    image.src = newArtworks[newArtIndex].img;
+    document.getElementById(newPanel.id).appendChild(image);
+
+    // Add title and artist
+    let p = document.createElement('p');
+    let divText = `<p>${newArtworks[newArtIndex].title} by ${newArtworks[newArtIndex].artist}`;
+    p.innerHTML = divText;
+    document.getElementById(newPanel.id).appendChild(p);
     
     // Add panel to panel id array
     artPanelIds.push(document.getElementById(newPanel.id))
@@ -71,12 +83,6 @@ document.getElementById("add-art-button").addEventListener("click", addArtPanel)
 function updateCounter(){
     document.getElementById('counter').textContent = `Artworks Viewed: ${artCounter}`;
 }
-
-var artCounter = 0;
-var panelCounter = 3;
-var artPanelIds = [document.getElementById('art-panel-0'), 
-    document.getElementById('art-panel-1'), 
-    document.getElementById('art-panel-2')]
 
 // Add event listeners for default art panels
 for(let i = 0; i < artPanelIds.length; i++){
