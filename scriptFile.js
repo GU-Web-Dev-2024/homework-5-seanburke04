@@ -1,3 +1,10 @@
+/**
+ * Name: Sean Burke
+ * Class: 332 - Web Development
+ * Assignment: HW5
+ * Last Modified: 10/8/24
+ */
+
 // List of additional artworks to add dynamically
 const newArtworks = [
     { title: 'The Scream', artist: 'Edvard Munch', img: 'https://via.placeholder.com/200' },
